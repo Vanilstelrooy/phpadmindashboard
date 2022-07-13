@@ -6,7 +6,7 @@
 //  count all female students
  $queryAllFemale = mysqli_query($conn, "SELECT * FROM enrollment WHERE gender = 'female'");
  $countAllFemale = mysqli_num_rows($queryAllFemale);
-   session_start();
+
 ?>
 <!DOCTYPE html>
 <html>

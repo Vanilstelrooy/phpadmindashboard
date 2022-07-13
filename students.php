@@ -46,10 +46,10 @@
                                     <td> <a href="edit-enrollment.php?id=<?php  echo $fetchrecords ['no']?>" class="btn btn-primary btn-small">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="#" class="btn btn-info btn-small">
+                                        <a href="view-enrollment.php?id=<?php  echo $fetchrecords ['no']?>" class="btn btn-info btn-small">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a href="#" class="btn btn-danger btn-small">
+                                        <a href="delete-enrollment.php?id=<?php  echo $fetchrecords ['no']?>" class="btn btn-danger btn-small">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
