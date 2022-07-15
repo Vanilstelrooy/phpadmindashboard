@@ -1,46 +1,13 @@
-<?php
-  $server = "localhost";
-  $username = "root";
-  $password = "";
-  $database = "web2";
-
-  $conn = mysqli_connect($server,$username,$password,$database);
-
-  $sqlQuery = mysqli_query($conn, "SELECT * FROM contactus");
-  $fetchrecords = mysqli_fetch_array($sqlQuery);
-//   echo $fetchrecords['firstname'] .''.$fetchrecords['email'];
-  while($fetchrecords = mysqli_fetch_array($sqlQuery)){
-    echo $fetchrecords['firstname'] .' '.$fetchrecords['email'].'<br>';
-  };
-?>
-<tr>
-                                    <td>1.</td>
-                                    <td>Vanilstelrooy Obare</td>
-                                    <td>+254702424203</td>
-                                    <td>Male</td>
-                                    <td>vanistelrooyobare@gmail.com</td>
-                                    <td>Web Design & Development</td>
-                                    <td>25th August 2022</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary btn-small">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-info btn-small">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-danger btn-small">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
 <div class="row pt-5">
-            <h1>Register Now</h1>
+
+            <div class="col-lg-12">
+            <h1>Contact Us</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime rem quasi esse, laudantium, molestiae consectetur minus quibusdam vitae assumenda perspiciatis officia quia deleniti, omnis natus?</p>
             <form action="index.php" method="POST">       
               <div class="row">
                 <div class="mb-3 col-lg-6">
                     <label for="firstname" class="form-label">First Name</label>
-                    <input type="text" name="firstname" class="form-control" placeholder="Enter Your First Name">
+                    <input type="text" name="firstname"  class="form-control" placeholder="Enter Your First Name">
                 </div>
                 <div class="mb-3 col-lg-6">
                     <label for="lastname" class="form-label">Last Name</label>
@@ -65,11 +32,36 @@
                </div>
                <button type="submit"name="submitButton" class="btn btn-primary" >Send A Message</button>
             </form>
-</div> 
-     <div class="row">
+        
+            </div>
+            
+</div>
+<?php
+   $server = "localhost";
+   $username = "root";
+   $password = "";
+   $database = "web2";
+  
+   $conn = mysqli_connect($server,$username,$password,$database);
+
+  $sqlQuery = mysqli_query($conn, "SELECT * FROM enrollment");
+  while($fetchrecords = mysqli_fetch_array($sqlQuery))
+  ?>
+<!DOCTYPE html>
+<html>
+ <?php require_once("includes/headers.php") ?> 
+<body>
+	<!-- All our code. write here   -->
+	<?php require_once("includes/navbar.php") ?>
+	<div class="sidebar">
+	<?php require_once("includes/sidebar.php") ?>
+	</div>
+	<div class="maincontent">
+        <div class="container-fluid">
+        <div class="row">
 				<div class="col-lg-12">
 					<div class="card-header bg-dark text-white text-center">
-                         <span>Messsages</span>
+                         <span>Contact Us</span>
 					</div>
                     <div class="card-body">
                         <table class="table table-striped table-hover table-responsive" style="font: size 12px;">
@@ -78,33 +70,22 @@
                                     <th>No.</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
+                                    <th>Phone Number</th>
                                     <th>Email</th>
-                                    <th>Phone Number</th>     
-                                    <th>Message</th>
+                                    <th>Course</th>
                                     <th>Enrolled on</th>
-                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php while($fetchStudentsRecords = mysqli_fetch_array($sqlQuery)){ ?>
+                                <?php while($fetchrecords = mysqli_fetch_array($sqlQuery)){ ?>
                                     <tr>
-                                    <td><?php echo $fetchStudentsRecords ['no']; ?></td>
-                                    <td><?php echo $fetchStudentsRecords ['firstname']; ?></td>
-                                    <td><?php echo $fetchStudentsRecords ['lastname']; ?></td>
-                                    <td><?php echo $fetchStudentsRecords ['email']; ?></td>
-                                    <td><?php echo $fetchStudentsRecords ['phonenumber']; ?></td>
-                                    <td><?php echo $fetchStudentsRecords ['message']; ?></td>
-                                    <td><?php echo $fetchStudentsRecords ['created_at']; ?></td>
-                                    <td> <a href="edit-enrollment.php?id=<?php  echo $fetchrecords ['no']?>" class="btn btn-primary btn-small">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="view-enrollment.php?id=<?php  echo $fetchrecords ['no']?>" class="btn btn-info btn-small">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a href="delete-enrollment.php?id=<?php  echo $fetchrecords ['no']?>" class="btn btn-danger btn-small">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
+                                    <td><?php echo $fetchrecords ['no']; ?></td>
+                                    <td><?php echo $fetchrecords ['firstname']; ?></td>
+                                    <td><?php echo $fetchrecords ['lastname']; ?></td>
+                                    <td><?php echo $fetchrecords ['phonenumber']; ?></td>
+                                    <td><?php echo $fetchrecords ['email']; ?></td>
+                                    <td><?php echo $fetchrecords ['message']; ?></td>
+                                    <td><?php echo $fetchrecords ['created_at']; ?></td>
                                     </tr>
                               <?php }?>
                             </tbody> 
@@ -113,4 +94,10 @@
                     </div>
 				</div>
 			</div>
-		</div>
+        </div>
+        
+
+	
+    <?php require_once("includes/scripts.php") ?>
+</body>
+</html>
