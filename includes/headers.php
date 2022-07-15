@@ -1,4 +1,4 @@
-<head>
+ <head>  
 	<title>Bootstrap Admin Template</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Creating admin dashboard">
