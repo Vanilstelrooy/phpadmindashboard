@@ -41,7 +41,7 @@
                                     <td><?php echo $fetchrecords ['email']; ?></td>
                                     <td><?php echo $fetchrecords ['phonenumber']; ?></td>
                                     <td><?php echo $fetchrecords ['message']; ?></td>
-                                    <td><?php echo $fetchrecords ['created_at']; ?></td>
+                                    <td><?php echo $fetchrecords ['created_at']; ?></td>  
                               <?php }?>
                             </tbody> 
 
