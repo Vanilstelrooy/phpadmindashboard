@@ -5,24 +5,24 @@ $password = "";
 $database = "web2";
 
 $conn = mysqli_connect($server,$username,$password,$database);
-if( isset($_POST['submitButton'])  )
+if( isset($_POST['submitButton']) )
 {
-    // 1.Fetch Form Data
-        $firstName = $_POST ['firstname'];
-       $lastName = $_POST ['lastname'];
-       $email = $_POST ['email'];
-       $phone = $_POST ['phonenumber'];
-       $message = $_POST ['message'];
-    // 2.Submit Form Data
-       $insertData = mysqli_query($conn, "INSERT INTO contactus(firstname,lastname,email,phonenumber,message)
-       VALUES('$firstName','$lastName','$email','$phone','$message')");
-       if($insertData)
-       {
-           echo "Data Submitted Successfully";
-       }
-       else{
-           echo "Error Occured";
-       }
+    $fullname = $_POST ['fullname'];
+    $phone = $_POST ['phone'];
+    $email = $_POST ['email'];
+    $gender = $_POST ['gender'];
+    $course = $_POST ['course'];
+
+    $insertData = mysqli_query($conn, "INSERT INTO enrollment(fullname,phonenumber,email,gender,course)
+    VALUES('$fullname','$phone','$email','$gender','$course')");
+    if($insertData)
+    {
+        echo "Data Submitted Successfully";
+    }
+    else
+    {
+        echo "Error Occured";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -36,50 +36,49 @@ if( isset($_POST['submitButton'])  )
 	</div>
 	<div class="maincontent">
         <div class="container-fluid">
-        <div class="container">
-        <div class="row pt-5">
-            <h1>Contact Us</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime rem quasi esse, laudantium, molestiae consectetur minus quibusdam vitae assumenda perspiciatis officia quia deleniti, omnis natus?</p>
-            <form action="addstudent.php" method="POST">       
-               <div class="row">
+        <form action="addstudent.php" method="POST">       
+        <div class="row">
                 <div class="mb-3 col-lg-6">
-                    <label for="firstname" class="form-label">First Name</label>
-                    <input type="text" name="firstname" class="form-control" placeholder="Enter Your First Name">
+                    <label for="fullname" class="form-label">Full Name</label>
+                    <input type="text" name="fullname" class="form-control" placeholder="Enter Your Full Name">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <label for="lastname" class="form-label">Last Name</label>
-                    <input type="text" name="lastname" class="form-control" placeholder="Enter Your Last Name">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" name="phone" class="form-control" placeholder="Enter Your Phone Number">
                 </div>
-                <div class="row">
-                    <div class="mb-3 col-lg-6 ">
-                        <label for="phonenumber" class="form-label">Phone number</label>
-                        <input type="tel" name="phonenumber" class="form-control" placeholder="Enter Your Phone Number">
-                    </div>
-                    <div class="mb-3 col-lg-6 col-md-6">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="Enter Your Email">
-                    </div>
-                   </div>
-               </div>
-               <div class="row">
-                   <div class="mb-3 col-lg-12">
-                    <label for="message" class="form-label">Enter Your Message</label>
-                    <textarea placeholder="Enter your Message" name="message" id="" cols="30" rows="5"  class="form-control" ></textarea>
-                   </div>
-               </div>
-               <button type="submit"name="submitButton" class="btn btn-primary" >Send A Message</button>
-            </form>
+        </div> 
+        <div class="row">
+                <div class="mb-3 col-lg-6">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter Your Email Address">
+                </div>
+                <div class="mb-3 col-lg-6">
+                    <label for="gender" class="form-label">Whats your gender?</label>
+                    <select name="gender" aria-label="Default select example" class="form-select">
+                        <option selected>--select your gender--</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
         </div>
-         <!-- Contact Us Ends Here -->
-         <hr>
-         <footer>
-             &copy; Vanilstelrooy Obare 2022
-         </footer>
-
-         </div>
+        <P style="text-align:center;">In order to complete your registration to the bootcamp,you are required to select one course you will be <br> undertaking. Please NOTE that this will be your learningtrack during the 2-weeks immersion.
+        </P>
+        <div class="row">
+                <div class="mb-3 col-lg-6">
+                    <select name="course" aria-label="Default select example" class="form-control">
+                    <label for="course"class="form-label">What's your prefered course?</label>
+                        <option selected>--select your courses--</option>
+                        <option value="Android App Development">Android App Development</option>
+                        <option value="Web Design & Development">Web Design & Development</option>
+                        <option value="Data Analysis">Data Analysis</option>
+                        <option value="Cyber Security">Cyber Security</option>
+                    </select>
+                </div>
+        </div>      
+    
         
-       
-    </div>
+        <button type="submit"name="submitButton" class="btn btn-primary" >Submit Application</button>
+      </form> 
 		</div>
 	</div>
 
